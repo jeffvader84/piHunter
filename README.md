@@ -48,7 +48,9 @@ $ sudo su
 # ./boot.sh
 ```
 **Reboot the system!**
-**Login as the new user: hunter
+
+**Login as the new user: hunter**
+
 **Default username:password below is hunter:pihunter (make changes if desiered)**
 
 ### Install Zeek and Suricata
