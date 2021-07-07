@@ -5,7 +5,7 @@
 
 Using the instructions below and pre-configured config files/scripts provided, you can setup a Raspberry Pi to collect full-packet captures on your network then index, normalize, and search through your data to find anamolies.  All the data and tools needed to deep dive into any irregularity or weird activity is ready to go!  A good threat hunting device has both GUI tools and multiple Living off the Land (LOL) tools.
 
-**Hardware list:**
+**Hardware/Software list:**
 1. Raspberry Pi 4B 8GB
 2. Micro SD Card 32 GB (64 GB Recommended)
 3. [BalenaEtcher](https://www.balena.io/etcher/)
@@ -54,6 +54,9 @@ $ sudo su
 
 
 
+
+
+### Old Option
 * Setup new User account.  Default username:password below is hunter:pihunter (make changes if desiered).
 ```
 $ sudo useradd -m -p pihunter hunter
