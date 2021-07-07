@@ -47,8 +47,8 @@ $ sudo chmod +x boot.sh
 $ sudo su
 # ./boot.sh
 ```
-## Reboot the system!
-## Login as the new user: hunter
+** Reboot the system! **
+** Login as the new user: hunter **
 ** Default username:password below is hunter:pihunter (make changes if desiered) **
 
 ### Install Zeek and Suricata
@@ -71,7 +71,7 @@ $ sudo chmod +x docker-install.sh
 $ sudo su
 # ./docker-install.sh
 ```
-## Logout then Login for hunter to get docker permissions
+** Logout then Login for hunter to get docker permissions **
 ```
 ```
 
