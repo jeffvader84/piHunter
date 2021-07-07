@@ -51,7 +51,7 @@ $ sudo su
 
 **Login as the new user: hunter**
 
-**Default username:password below is hunter:pihunter (make changes if desiered)**
+**Default username:password is hunter:pihunter (make changes if desiered)**
 
 ### Install Zeek and Suricata
 ```
