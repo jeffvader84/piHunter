@@ -47,43 +47,32 @@ $ sudo chmod +x boot.sh
 $ sudo su
 # ./boot.sh
 ```
-### Reboot the system!
-### Login as the new user: hunter
+## Reboot the system!
+## Login as the new user: hunter
 ** Default username:password below is hunter:pihunter (make changes if desiered) **
 
-
-
-
-
-
-### Old Option
-* Setup new User account.  Default username:password below is hunter:pihunter (make changes if desiered).
+### Install Zeek and Suricata
 ```
-$ sudo useradd -m -p pihunter hunter
-$ sudo usermod -aG adm,dialout,cdrom,sudo,audio,video,plugdev,games,users,input,netdev,gpio,i2c,spi hunter
+$ sudo userdel -r pi
+$ cd /home/hunter
+$ git clong https://github.com/jeffvader84/piHunter
+$ cd piHunter
+$ vi suricata.yml.original
+# ^^ edit the HOME_NET variable to match your IP space
+$ sudo chmod +x zeek-suricata-install.sh
+$ sudo su
+# ./zeek-suricata-install.sh
 ```
-* **Now log out of Pi user and into the new user - Hunter**
 
-*The following commands are all run as the user - Hunter*
+### Docker and Elastic Stack Install
+```
+$ cd /home/hunter
+$ sudo chmod +x docker-install.sh
+$ sudo su
+# ./docker-install.sh
+```
+## Logout then Login for hunter to get docker permissions
+```
+```
 
-* Update and install additional tools
-```
-$ sudo apt update -y
-$ sudo apt install htop tmux vim git prads tcpdump scapy tshark foremost yara network-manager -y && sudo apt upgrade -y
-```
-* Disable Bluetooth and WiFi
-```
-### Add the following lines to the end of /boot/config.txt
-
-# Disable Bluetooth and WiFi
-dtoverlay=disable-wifi
-dtoverlay=disable-bt
-```
-* Disable Unnecessary Services
-*We do this to use as little power, processing, and memory usage from the base OS to maximize performance for piHunter*
-```
-$ sudo systemctl stop wpa_supplicant
-$ sudo systemctl disable wpa_supplicant
-$ sudo systemctl stop bluetooth.service
-$ sudo systemctl disable bluetooth.service
-```
+### Arkime Install
