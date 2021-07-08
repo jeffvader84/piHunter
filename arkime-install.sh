@@ -43,6 +43,8 @@ mkdir -p /hunt-xs/arkime/raw
 
 chown hunter:hunter -r /hunt-xs/arkime/
 
+cp /home/hunter/piHunter/config.ini.original /opt/arkime/etc/config.ini
+
 ./db.pl http://password:$1@localhost:9200 init
 
 /opt/arkime/bin/arkime_add_user.sh hunter "Admin User" pihunter --admin
