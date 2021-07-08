@@ -127,4 +127,9 @@ $ sudo cp /etc/GeoIP.conf /etc/GeoIP.conf.original
 $ sudo mv /path/to/new/GeoIP.conf /etc/GeoIP.conf
 $ sudo geoipupdate
 
-### Filebeat Install
+### Filebeat Install and configure data flow into Filebeat
+
+```
+$ wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.13.1-arm64.deb
+$ sudo apt install ./filebeat-7.13.1-arm64.deb
+```
