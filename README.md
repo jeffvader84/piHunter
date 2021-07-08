@@ -109,10 +109,12 @@ $ docker stop elasticsearch
 ### Arkime Install
 
 **change following in config.ini:**
+```
 elasticsearch=http://elastic:password@localhost:9200
 pcapDir = /hunt-xs/arkime/raw
 maxFileSizeG = 1
 freeSpaceG = 15%
+```
 
 **Arkime install will take up to an hour**
 ```
@@ -123,9 +125,11 @@ $ sudo su
 
 **For Geo Location on IPs
 Follow instructions @ https://arkime.com/faq#maxmind**
+```
 $ sudo cp /etc/GeoIP.conf /etc/GeoIP.conf.original
 $ sudo mv /path/to/new/GeoIP.conf /etc/GeoIP.conf
 $ sudo geoipupdate
+```
 
 ### Filebeat Install and configure data flow into Filebeat
 
