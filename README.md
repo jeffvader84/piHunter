@@ -138,7 +138,7 @@ $ sudo geoipupdate
 $ wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.13.1-arm64.deb
 $ sudo apt install ./filebeat-7.13.1-arm64.deb
 ```
-**Make the edits to the filebeat.yml.original file
+**Make the edits to the filebeat.yml.original file**
 
 ```
 Edit the Kibana section:
@@ -166,7 +166,9 @@ $ sudo cp zeek.yml /etc/filebeat/modules.d/zeek.yml
 ```
 sudo filebeat modules enable suricata
 sudo cp suricata.filebeat.yml /etc/filebeat/modules.d/suricata.yml
-  
+```
+**Finish Filebeat Setup**
+```
 sudo filebeat setup
 sudo filebeat -e
 # CTRL+C after a the output stops
