@@ -171,7 +171,7 @@ sudo filebeat setup
 sudo filebeat -e
 # CTRL+C after a the output stops
 ```
-## Setup Cron Job to bring services up from a system reboot
+### Setup Cron Job to bring services up from a system reboot
 ```
 $ sudo su
 # mv pihunter-startup.sh /home/hunter
