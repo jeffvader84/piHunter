@@ -35,7 +35,7 @@ $ sudo vi /etc/fstab
 UUID=<device id> /hunt-xs ext4 defaults  0 0
 UUID=<device id> swap swap
 $ sudo swapon -a
-$ sudo umount -a
+$ sudo mount -a
 ```
 * Next clone the Git repo and run the first script
 * You will use the network information you gathered before here
@@ -136,4 +136,45 @@ $ sudo geoipupdate
 ```
 $ wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.13.1-arm64.deb
 $ sudo apt install ./filebeat-7.13.1-arm64.deb
+```
+**Make the edits to the filebeat.yml.original file
+
+```
+Edit the Kibana section:
+ uncomment line 151
+ add the following lines below host
+ username: "elastic"
+ password: "password"
+ 
+Edit the Elasticsearch Output:
+ uncomment lines 185 and 186
+ enter the elastic password in line 186
+```
+**Move updated yml file**
+```
+$ sudo cp filebeat.yml.original /etc/filebeat/filebeat.yml
+```
+
+**Zeek filebeat setup**
+```
+sudo filebeat modules enable zeek
+sudo vi /etc/filebeat/modules.d/zeek.yml
+```
+# var.paths: ["/hunt-xs/zeek/logs/current/*<logname>.log"]
+# configure zeek.yml file in filebeat modules
+# /etc/filebeat/modules.d/zeek.yml
+  
+**Suricata filebeat setup**
+# https://newtonpaul.com/tag/suricata/
+
+sudo filebeat modules enable suricata
+sudo vi /etc/filebeat/modules.d/suricata.yml
+  
+sudo filebeat setup
+sudo filebeat -e
+  
+## Setup Cron Job to bring services up from a system reboot
+```
+$ sudo su
+# echo "" >> /etc/crontab????
 ```
