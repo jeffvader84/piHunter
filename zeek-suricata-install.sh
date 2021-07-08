@@ -71,6 +71,7 @@ apt install -y python-pip python3-pip libnss3-dev liblz4-dev libnspr4-dev libcap
 apt install -y libpcre3 libpcre3-dbg libpcre3-dev build-essential libpcap-dev libyaml-0-2 libyaml-dev pkg-config zlib1g zlib1g-dev make libmagic-dev libjansson-dev rustc cargo python-yaml python3-yaml liblua5.1-dev
 
 mkdir /hunt-xs/suricata
+chown hunter:hunter -R /hunt-xs/suricata
 
 wget https://www.openinfosecfoundation.org/download/suricata-6.0.2.tar.gz
 tar -xzvf suricata-6.0.2.tar.gz
