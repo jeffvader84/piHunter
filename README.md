@@ -122,6 +122,7 @@ $ sudo su
 # chmod +x arkime-install.sh
 # ./arkime-install.sh <elasticpassword>
 ```
+*Default user and password for Arkime is hunter:pihunter*
 
 **For Geo Location on IPs
 Follow instructions @ https://arkime.com/faq#maxmind**
@@ -177,3 +178,18 @@ $ sudo su
 # echo "@reboot sleep 15 && /home/hunter/pihunter-startup.sh" >> /var/spool/cron/crontabs/root
 # echo "*/5 * * * * /hunt-xs/zeek/bin/zeekctl cron" >> /var/spool/cron/crontabs/root
 ```
+*Default log output goes to hunter home folder.  To change, edit variable at top of startup script for log locaiton and name*
+
+### Verify Install
+```
+$ sudo reboot
+```
+* Wait for piHunter to reboot
+* SSH into piHunter
+```
+$ tail -f boot.log
+```
+* Watch the log and look for any errors
+* If all services startup properly login to ElasticStack and Arkime
+* Verify data is coming in
+* Start hunting!
