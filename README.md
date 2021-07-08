@@ -13,7 +13,7 @@ Using the instructions below and pre-configured config files/scripts provided, y
 5. Ethernet Cable (2x)
 6. USB 3.0 Ethernet Adaptor
 7. Switch with Port Mirroring capabilities
-8. External Harddrive (1 TB Recommended) 
+9. External Harddrive (1 TB Recommended) 
 
 
 ### Initial Boot and Configuring the Pi
@@ -21,17 +21,18 @@ Using the instructions below and pre-configured config files/scripts provided, y
 In order to get Raspberry Pi OS ready there are some changes we need to make:  
 * After using *BalenaEtcher* to image the Micro SD Card, reconnect the SD card to your computer. Then create a blank file and name it **ssh**.  This will enable ssh on boot and we can connect to the Pi via Headless mode.
 * Get your Network IP information and choose a static IP for both ethernet interfaces for the Pi.
+* Setup port mirroring on the switch to mirror all traffic on the port you are using for the built in ethernet connection on the RaspberryPi
 * Plug the External HDD (HDD) into the RaspberryPi.  Run the following commands to configure the HDD:
 ```
 $ lsblk
-# make note of the HDD location in /dev directory
+## make note of the HDD location in /dev directory
 $ gdisk /dev/<device>
 $ mkfs.ext4 -L piHunter-xs /dev/<device>
 $ mkswap -L SWAP /dev/<device>
 $ blkid
-# make note of the partition ids
+## make note of the partition ids
 $ sudo vi /etc/fstab
-# add the following lines to fstab
+## add the following lines to fstab
 UUID=<device id> /hunt-xs ext4 defaults  0 0
 UUID=<device id> swap swap
 $ sudo swapon -a
@@ -60,7 +61,7 @@ $ cd /home/hunter
 $ git clong https://github.com/jeffvader84/piHunter
 $ cd piHunter
 $ vi suricata.yml.original
-# ^^ edit the HOME_NET variable to match your IP space
+## ^^ edit the HOME_NET variable to match your IP space
 $ sudo chmod +x zeek-suricata-install.sh
 $ sudo su
 # ./zeek-suricata-install.sh
@@ -82,7 +83,7 @@ $ docker pull docker.elastic.co/elasticsearch/elasticsearch:7.13.1-arm64
 $ docker pull docker.elastic.co/kibana/kibana:7.13.1-arm64
 $ docker network create huntnet
 
-# create mount point for storgae
+## create mount point for storgae
 $ sudo mkdir -p /hunt-xs/elastic/es-logs
 $ sudo mkdir -p /hunt-xs/elastic/es-data
 $ sudo mkdir -p /hunt-xs/elastic/kb-logs
@@ -90,17 +91,17 @@ $ sudo mkdir -p /hunt-xs/elastic/kb-data
 $ sudo chown hunter:hunter -R /hunt-xs/elastic
 $ sudo chmod 777 -R /hunt-xs/elastic
 
-# start es container
+## start es container
 $ docker run -d --name elasticsearch --net huntnet -p 9200:9200 -p 9300:9300 -v /hunt-xs/elastic/es-data:/usr/share/elasticsearch/data -v /hunt-xs/elastic/es-logs:/usr/share/elasticsearch/logs -e "discovery.type=single-node" -e "xpack.security.enabled=true" -e "cluster.name=piHunter" -e "node.name=piHunter.es" docker.elastic.co/elasticsearch/elasticsearch:7.13.1-arm64
 
-# setup es passwords
+## setup es passwords
 $ docker exec -it elasticsearch /usr/share/elasticsearch/bin/elasticsearch-setup-passwords auto -b > elastic.passwd
 $ cat elastic.passwd
-# copy your kibana_system password and enter into command below
+## copy your kibana_system password and enter into command below
 
 $ docker run -d --name kibana --net huntnet -p 5601:5601 -v /hunt-xs/elastic/kb-data:/usr/share/kibana/data -v /hunt-xs/elastic/kb-logs:/var/log -e "ELASTICSEARCH_HOSTS=http://elasticsearch:9200" -e "ELASTICSEARCH_URL=http://elasticsearch:9200" -e "xpack.security.enabled=true" -e "ELASTICSEARCH_USERNAME=kibana_system" -e "ELASTICSEARCH_PASSWORD=<passwd>" -e "node.name=piHunter.kb" docker.elastic.co/kibana/kibana:7.13.1-arm64
 
-# wait 1 - 2 minutes
+## wait 1 - 2 minutes
 $ docker stop kibana
 $ docker stop elasticsearch
 
@@ -110,6 +111,7 @@ $ docker stop elasticsearch
 
 **change following in config.ini:**
 ```
+$ sudo vi config.ini.original
 elasticsearch=http://elastic:password@localhost:9200
 pcapDir = /hunt-xs/arkime/raw
 maxFileSizeG = 1 (Or any max file size of your choice)
@@ -132,7 +134,7 @@ $ sudo mv /path/to/new/GeoIP.conf /etc/GeoIP.conf
 $ sudo geoipupdate
 ```
 
-### Filebeat Install and configure data flow into Filebeat
+### Filebeat Install and configure data flow into ElasticStack
 
 ```
 $ wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.13.1-arm64.deb
@@ -164,14 +166,14 @@ $ sudo cp zeek.yml /etc/filebeat/modules.d/zeek.yml
   
 **Suricata filebeat setup**
 ```
-sudo filebeat modules enable suricata
-sudo cp suricata.filebeat.yml /etc/filebeat/modules.d/suricata.yml
+$ sudo filebeat modules enable suricata
+$ sudo cp suricata.filebeat.yml /etc/filebeat/modules.d/suricata.yml
 ```
 **Finish Filebeat Setup**
 ```
-sudo filebeat setup
-sudo filebeat -e
-# CTRL+C after a the output stops
+$ sudo filebeat setup
+$ sudo filebeat -e
+## CTRL+C after a the output stops
 ```
 ### Setup Cron Job to bring services up from a system reboot
 ```
@@ -194,7 +196,7 @@ $ tail -f boot.log
 ```
 * Watch the log and look for any errors
 * If all services startup properly login to ElasticStack and Arkime
-* Verify data is coming in by going to http://<your static IP>:5601 and http://<your static IP>:8005
+* Verify data is coming in by going to http://your-static-IP:5601 and http://your-static-IP:8005
 * Start hunting!
 
 ### Winlogbeats
