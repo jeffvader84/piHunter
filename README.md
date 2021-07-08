@@ -108,21 +108,21 @@ $ docker stop elasticsearch
 
 ### Arkime Install
 
-# change following in config.ini:
+**change following in config.ini:**
 elasticsearch=http://elastic:password@localhost:9200
 pcapDir = /hunt-xs/arkime/raw
 maxFileSizeG = 1
 freeSpaceG = 15%
 
-# Arkime install will take up to an hour
+**Arkime install will take up to an hour**
 ```
 $ sudo su
 # chmod +x arkime-install.sh
 # ./arkime-install.sh
 ```
 
-# For Geo Location on IPs
-# Follow instructions @ https://arkime.com/faq#maxmind
+**For Geo Location on IPs
+Follow instructions @ https://arkime.com/faq#maxmind**
 $ sudo cp /etc/GeoIP.conf /etc/GeoIP.conf.original
 $ sudo mv /path/to/new/GeoIP.conf /etc/GeoIP.conf
 $ sudo geoipupdate
