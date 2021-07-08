@@ -176,6 +176,7 @@ sudo filebeat -e
 ### Setup Cron Job to bring services up from a system reboot
 ```
 $ sudo su
+# chmod +x pihunter-startup.sh
 # mv pihunter-startup.sh /home/hunter
 # echo "@reboot sleep 15 && /home/hunter/pihunter-startup.sh" >> /var/spool/cron/crontabs/root
 # echo "*/5 * * * * /hunt-xs/zeek/bin/zeekctl cron" >> /var/spool/cron/crontabs/root
