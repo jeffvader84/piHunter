@@ -194,7 +194,7 @@ $ tail -f boot.log
 ```
 * Watch the log and look for any errors
 * If all services startup properly login to ElasticStack and Arkime
-* Verify data is coming in
+* Verify data is coming in by going to http://<your static IP>:5601 and http://<your static IP>:8005
 * Start hunting!
 
 ### Winlogbeats
