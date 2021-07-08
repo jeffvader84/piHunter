@@ -120,7 +120,7 @@ freeSpaceG = 15%
 ```
 $ sudo su
 # chmod +x arkime-install.sh
-# ./arkime-install.sh
+# ./arkime-install.sh <elasticpassword>
 ```
 
 **For Geo Location on IPs
@@ -157,22 +157,19 @@ $ sudo cp filebeat.yml.original /etc/filebeat/filebeat.yml
 
 **Zeek filebeat setup**
 ```
-sudo filebeat modules enable zeek
-sudo vi /etc/filebeat/modules.d/zeek.yml
+$ sudo filebeat modules enable zeek
+$ sudo cp zeek.yml /etc/filebeat/modules.d/zeek.yml
 ```
-# var.paths: ["/hunt-xs/zeek/logs/current/*<logname>.log"]
-# configure zeek.yml file in filebeat modules
-# /etc/filebeat/modules.d/zeek.yml
   
 **Suricata filebeat setup**
-# https://newtonpaul.com/tag/suricata/
-
+```
 sudo filebeat modules enable suricata
-sudo vi /etc/filebeat/modules.d/suricata.yml
+sudo cp suricata.filebeat.yml /etc/filebeat/modules.d/suricata.yml
   
 sudo filebeat setup
 sudo filebeat -e
-  
+# CTRL+C after a the output stops
+```
 ## Setup Cron Job to bring services up from a system reboot
 ```
 $ sudo su
