@@ -112,7 +112,7 @@ $ docker stop elasticsearch
 ```
 elasticsearch=http://elastic:password@localhost:9200
 pcapDir = /hunt-xs/arkime/raw
-maxFileSizeG = 1
+maxFileSizeG = 1 (Or any max file size of your choice)
 freeSpaceG = 15%
 ```
 
