@@ -83,12 +83,12 @@ $ docker pull docker.elastic.co/kibana/kibana:7.13.1-arm64
 $ docker network create huntnet
 
 # create mount point for storgae
-sudo mkdir -p /hunt-xs/elastic/es-logs
-sudo mkdir -p /hunt-xs/elastic/es-data
-sudo mkdir -p /hunt-xs/elastic/kb-logs
-sudo mkdir -p /hunt-xs/elastic/kb-data
-chown hunter:hunter -R /hunt-xs/elastic
-chmod 777 -R /hunt-xs/elastic
+$ sudo mkdir -p /hunt-xs/elastic/es-logs
+$ sudo mkdir -p /hunt-xs/elastic/es-data
+$ sudo mkdir -p /hunt-xs/elastic/kb-logs
+$ sudo mkdir -p /hunt-xs/elastic/kb-data
+$ sudo chown hunter:hunter -R /hunt-xs/elastic
+$ sudo chmod 777 -R /hunt-xs/elastic
 
 # start es container
 $ docker run -d --name elasticsearch --net huntnet -p 9200:9200 -p 9300:9300 -v /hunt-xs/elastic/es-data:/usr/share/elasticsearch/data -v /hunt-xs/elastic/es-logs:/usr/share/elasticsearch/logs -e "discovery.type=single-node" -e "xpack.security.enabled=true" -e "cluster.name=piHunter" -e "node.name=piHunter.es" docker.elastic.co/elasticsearch/elasticsearch:7.13.1-arm64
@@ -107,3 +107,24 @@ $ docker stop elasticsearch
 ```
 
 ### Arkime Install
+
+# change following in config.ini:
+elasticsearch=http://elastic:password@localhost:9200
+pcapDir = /hunt-xs/arkime/raw
+maxFileSizeG = 1
+freeSpaceG = 15%
+
+# Arkime install will take up to an hour
+```
+$ sudo su
+# chmod +x arkime-install.sh
+# ./arkime-install.sh
+```
+
+# For Geo Location on IPs
+# Follow instructions @ https://arkime.com/faq#maxmind
+$ sudo cp /etc/GeoIP.conf /etc/GeoIP.conf.original
+$ sudo mv /path/to/new/GeoIP.conf /etc/GeoIP.conf
+$ sudo geoipupdate
+
+### Filebeat Install
