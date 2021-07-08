@@ -193,3 +193,7 @@ $ tail -f boot.log
 * If all services startup properly login to ElasticStack and Arkime
 * Verify data is coming in
 * Start hunting!
+
+### Winlogbeats
+
+**COMING SOON...**
