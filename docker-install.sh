@@ -6,9 +6,10 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 OFF='\033[0m'
 
-WHOAMI=$(id -u)
+IAM=$(id -u)
 
-if [ $WHOAMI -gt 0 ]; then
+if [ $IAM -gt 0 ] 
+then
 	echo -e "${RED}You must use sudo to run this script.${OFF}"
 	echo "sudo $0"
 	exit 1
