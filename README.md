@@ -5,6 +5,8 @@
 
 Using the instructions below and pre-configured config files/scripts provided, you can setup a Raspberry Pi to collect full-packet captures on your network then index, normalize, and search through your data to find anamolies.  All the data and tools needed to deep dive into any irregularity or weird activity is ready to go!  A good threat hunting device has both GUI tools and multiple Living off the Land (LOL) tools.
 
+<img width="749" alt="pihunter_htop" src="https://user-images.githubusercontent.com/22893767/125179132-fe303d00-e1b0-11eb-9fe4-26d62546aaac.png">
+
 **Hardware/Software list:**
 1. Raspberry Pi 4B 8GB
 2. Micro SD Card 32 GB (64 GB Recommended)
