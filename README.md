@@ -176,7 +176,7 @@ $ sudo cp suricata.filebeat.yml /etc/filebeat/modules.d/suricata.yml
 ```
 $ sudo filebeat setup
 $ sudo filebeat -e
-## CTRL+C after a the output stops
+## CTRL+C after the output stops
 ```
 ### Setup Cron Job to bring services up from a system reboot
 ```
