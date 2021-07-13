@@ -53,7 +53,7 @@ sleep 3
 # update pi / install required packages
 
 apt update -y
-apt install htop tmux vim git prads tcpdump scapy tshark foremost yara network-manager -y && sudo apt upgrade -y
+apt install htop tmux vim git prads tcpdump scapy tshark foremost yara '^libssl1.0.[0-9]$' libunwind8 network-manager -y && sudo apt upgrade -y
 
 # Stop unncessessary services
 echo "" >> /boot/config.txt
@@ -111,5 +111,20 @@ echo " gateway $ROUTERIP" >> /etc/network/interfaces
 
 # make dir for mount point
 mkdir /hunt-xs
+
+###################################
+# Download and extract PowerShell
+
+# Grab the latest tar.gz
+wget https://github.com/PowerShell/PowerShell/releases/download/v7.1.3/powershell-7.1.3-linux-arm64.tar.gz
+
+# Make folder to put powershell
+mkdir /usr/bin/powershell
+
+# Unpack the tar.gz file
+tar -xzvf ./powershell-7.1.3-linux-arm64.tar.gz -C /usr/bin/powershell
+
+# remove pwsh install file
+rm -rf powershell-7.1.3-linux-arm64.tar.gz
 
 # script - stop
