@@ -45,7 +45,7 @@ $ sudo mount -a
 * You will use the network information you gathered before here
 * Use you USB-Ethernet interface for the static IP
 ```
-$ git clong https://github.com/jeffvader84/piHunter
+$ git clone https://github.com/jeffvader84/piHunter
 $ cd piHunter
 $ sudo chmod +x boot.sh
 $ sudo su
