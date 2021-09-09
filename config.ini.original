@@ -16,7 +16,7 @@
 # Elasticsearch load balancer, a different elasticsearch node in the cluster can be specified
 # for each Arkime node to help spread load on high volume clusters.  For user/password
 # use http://user:pass@host:port
-elasticsearch=http://localhost:9200
+elasticsearch=http://elastic:pihunter@localhost:9200
 
 # How often to create a new elasticsearch index. hourly,hourly6,daily,weekly,monthly
 # Changing the value will cause previous sessions to be unreachable
@@ -38,7 +38,7 @@ rotateIndex=daily
 # for secure S2S communication. Comment out for no user authentication.
 # Changing the value will make all previously stored passwords no longer work.
 # Make this RANDOM, you never need to type in
-passwordSecret = Password1
+passwordSecret = pihunter
 
 # Use a different password for S2S communication then passwordSecret.
 # Must be in default section.  Make this RANDOM, you never need to type in
@@ -71,11 +71,11 @@ interface=eth0
 #accessLogFormat = :date :username %1b[1m:method%1b[0m %1b[33m:url%1b[0m :status :res[content-length] bytes :response-time ms
 
 # The directory to save raw pcap files to
-pcapDir = /opt/arkime/raw
+pcapDir = /hunt-xs/arkime/raw
 
 # The max raw pcap file size in gigabytes, with a max value of 36G.
 # The disk should have room for at least 10*maxFileSizeG
-maxFileSizeG = 12
+maxFileSizeG = 5
 
 # The max time in minutes between rotating pcap files.  Default is 0, which means
 # only rotate based on current file size and the maxFileSizeG variable
@@ -108,7 +108,7 @@ maxPackets = 10000
 # expressed as a percentage (ex: 5%).  This does NOT delete the session records in
 # the database. It is recommended this value is between 5% and 10% of the disk.
 # Database deletes are done by the db.pl expire script
-freeSpaceG = 5%
+freeSpaceG = 10%
 
 # The port to listen on, by default 8005
 viewPort = 8005
