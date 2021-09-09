@@ -404,20 +404,25 @@ echo -e "eth0\nno\nhttp://localhost:9200\npihunter\nyes" | make config
 logEnd "Arkime build from source"
 
 mkdir -p /hunt-xs/arkime/raw
-
+# create Arkime dir and change permissions
 chown hunter:hunter -R /hunt-xs/arkime/
-
+chmod 777 -R /hunt-xs/arkime
+# copy custom config file
 cp /home/pi/piHunter/config.ini.original /opt/arkime/etc/config.ini
+# initiate Arkime
 cd db
 ./db.pl http://elastic:pihunter@localhost:9200 init
+# create default admin user
 /opt/arkime/bin/arkime_add_user.sh hunter "Admin User" pihunter --admin
 
+# Setup IP Geo Location service
 ## instructions @ https://arkime.com/faq#maxmind
 sudo apt install geoipupdate -y
 cp /etc/GeoIP.conf /etc/GeoIP.conf.original
 mv /home/pi/piHunter/GeoIP.conf /etc/GeoIP.conf
 geoipupdate
 
+# remove Git repo for Arkime
 cd /home/hunter
 rm -rf arkime/*
 rm -rf arkime/.* 2>/dev/null
