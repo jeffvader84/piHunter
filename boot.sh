@@ -7,6 +7,7 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 OFF='\033[0m'
+
 WHOAMI=`id -u`
 LOGDIR='/home/hunter/pihunter-install.log'
 
@@ -237,7 +238,8 @@ tar -xzvf suricata-6.0.2.tar.gz
 rm -rf suricata-6.0.2.tar.gz
 cd suricata-6.0.2/
 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/hunt-xs/suricata --enable-nfqueue --enable-lua
-make && sudo make install
+#make && sudo make install
+make && make install
 logEnd "Suricata build from source"
 cd suricata-update/
 python setup.py build
@@ -328,22 +330,6 @@ docker run -d --name elasticsearch --net huntnet -p 9200:9200 -p 9300:9300 -v /h
 # sleep to allow elasticsearch container to spin up
 sleep 120
 
-#docker exec -it elasticsearch /usr/share/elasticsearch/bin/elasticsearch-setup-passwords auto -b > elastic.passwd
-#sleep 5
-#KBPWD=$(cat elastic.passwd | grep 'PASSWORD kibana_system' | awk '{print $4}')
-
-#touch /home/hunter/kibana.yml
-#echo "##" >> /home/hunter/kibana.yml 
-#echo "###  piHunter default Kibama config file" >> /home/hunter/kibana.yml
-#echo "##" >> /home/hunter/kibana.yml
-#echo "server.name: kibana" >> /home/hunter/kibana.yml
-#echo "server.host: "0"" >> /home/hunter/kibana.yml
-#echo "elasticsearch.hosts: [ "http://elasticsearch:9200" ]" >> /home/hunter/kibana.yml
-#echo "elasticsearch.username: "kibana_system"" >> /home/hunter/kibana.yml
-#echo "elasticsearch.password: "$KBPWD"" >> /home/hunter/kibana.yml
-
-#docker run -d --name kibana --net huntnet -p 5601:5601 -v /home/pi/kibana.yml:/usr/share/kibana/config/kibana.yml -v /hunt-xs/elastic/kb-data:/usr/share/kibana/data -v /hunt-xs/elastic/kb-logs:/var/log -e "node.name=piHunter.kb" -e "ELASTICSEARCH_HOSTS=http://elasticsearch:9200" -e "ELASTICSEARCH_URL=http://elasticsearch:9200" -e "xpack.security.enabled=true" docker.elastic.co/kibana/kibana:7.13.1-arm64
-
 docker run -d --name kibana --net huntnet -p 5601:5601 -v /hunt-xs/elastic/kb-data:/usr/share/kibana/data -v /hunt-xs/elastic/kb-logs:/var/log -e "ELASTICSEARCH_HOSTS=http://elasticsearch:9200" -e "ELASTICSEARCH_URL=http://elasticsearch:9200" -e "xpack.security.enabled=true" -e "ELASTICSEARCH_USERNAME=elastic" -e "ELASTICSEARCH_PASSWORD=pihunter" -e "node.name=piHunter.kb" docker.elastic.co/kibana/kibana:7.13.1-arm64
 # sleep to allow kibana container to spin up
 sleep 60
@@ -425,7 +411,7 @@ echo "@reboot sleep 10 && /home/hunter/pihunter-startup.sh" >> /var/spool/cron/c
 logEnd "Setup Cron Job to startup services from system boot"
 
 
-logStart "System configuration"
+logStart "System/Network configuration"
 # Set Hostname
 hostnamectl set-hostname $HNAME
 echo "127.0.0.1       localhost" > /etc/hosts
@@ -463,7 +449,7 @@ echo "auto $INTERFACE" >> /etc/network/interfaces
 echo "iface $INTERFACE inet manual" >> /etc/network/interfaces
 echo " address $HIP/24" >> /etc/network/interfaces
 echo " gateway $ROUTERIP" >> /etc/network/interfaces
-logEnd "Network specs"
+logEnd "System/Network configuration"
 
 echo "[!] reboot the system, login as user hunter and run the following command"
 echo "[!] sudo userdel -r pi"
