@@ -1,4 +1,4 @@
-# piHunter | Version 1.3.1 (Beta)
+# piHunter | Version 1.3.2 (Beta)
 > Data Driven Threat Hunting on the RaspberryPi
 
 ## Utilizes open source tools and turn a Raspberry Pi into a threat hunting device.
@@ -23,14 +23,15 @@ Using the instructions below and pre-configured config files/scripts provided, y
 
 In order to get Raspberry Pi OS ready there are some changes we need to make:  
 * After using *BalenaEtcher* to image the Micro SD Card, reconnect the SD card to your computer. Then create a blank file and name it **ssh**.  This will enable ssh on boot and we can connect to the Pi via Headless mode.
-* Get your Network IP information and choose a static IP for the management ethernet interfaces for the Pi. (Please note, if only using the built in ethernet port, use eth0 for all prompts in the boot script when required to select an interface.
+* Get your Network IP information and choose a static IP for the management ethernet interfaces for the Pi. (Please note, if only using the built in ethernet port, use eth0 for all prompts in the boot script when required to select an interface.)
+* I recommend using the USB-Ethernet interface as the management interface.
 * Setup port mirroring on the switch to mirror all traffic on the port you are using for the built in ethernet connection on the RaspberryPi
 * Plug the External HDD (HDD) into the RaspberryPi.  
 * Turn on your RaspberryPi and connect to it via SSH
+* Install Git and Vim
 * Next clone the Git repo
-* You will use the network information you gathered before here
-* Use you USB-Ethernet interface for the static IP
 ```
+$ sudo apt install git vim -y
 $ git clong https://github.com/jeffvader84/piHunter
 $ cd piHunter
 ```
