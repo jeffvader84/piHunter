@@ -34,42 +34,30 @@ In order to get Raspberry Pi OS ready there are some changes we need to make:
 $ git clong https://github.com/jeffvader84/piHunter
 $ cd piHunter
 ```
- * Now edit GeoIP.conf and suricata.yaml.original
+ * Edit suricata.yaml.original by commenting out the HOME_NET variables at the top and created a HOME_NET with your Private IP range.  Hint: most home routers use a /24 CIDR range.  Ex: 192.168.1.0/24
+ * Now follow the instructions [here](https://arkime.com/faq#maxmind): then edit GeoIP.conf and add your account infomation. 
+ * Now make the boot script executable, change to root, and run the script!
+```
 $ sudo chmod +x boot.sh
 $ sudo su
 # ./boot.sh
 ```
 **Reboot the system!**
+ * Login as hunter using default password: pihunter
+```
+sudo userdel -r pi
+```
 
 **Login as the new user: hunter**
 
 **Default username:password is hunter:pihunter (make changes if desiered)**
 
-### Install Zeek and Suricata
-```
-$ sudo userdel -r pi
-$ cd /home/hunter
-$ git clong https://github.com/jeffvader84/piHunter
-$ cd piHunter
-$ vi suricata.yml.original
-## ^^ edit the HOME_NET variable to match your IP space
-```
-
-
 *Default user and password for Arkime is hunter:pihunter*
-
-**For Geo Location on IPs
-Follow instructions @ https://arkime.com/faq#maxmind**
 
 ```
 *Default log output goes to hunter home folder.  To change, edit variable at top of startup script for log locaiton and name*
 
 ### Verify Install
-```
-$ sudo reboot
-```
-* Wait for piHunter to reboot
-* SSH into piHunter
 ```
 $ tail -f boot.log
 ```
@@ -94,4 +82,3 @@ $ tail -f boot.log
 
 **Kibana Suricata Default Dashboard**
 <img width="1280" alt="pihunter-suricata" src="https://user-images.githubusercontent.com/22893767/125179538-82d08a80-e1b4-11eb-80cf-bc3b47f43092.png">
-
