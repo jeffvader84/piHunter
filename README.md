@@ -1,4 +1,4 @@
-# piHunter | Version 1.3.2 (Beta)
+# piHunter | Version 1.3.3 (Beta)
 > Data Driven Threat Hunting on the RaspberryPi
 
 ## Utilizes open source tools and turn a Raspberry Pi into a threat hunting device.
@@ -32,6 +32,8 @@ In order to get Raspberry Pi OS ready there are some changes we need to make:
 * Next clone the Git repo
 ```
 $ sudo apt install git vim -y
+$ sudo apt update -y && sudo apt upgrade -yy
+$ sudo reboot
 $ git clong https://github.com/jeffvader84/piHunter
 $ cd piHunter
 ```
