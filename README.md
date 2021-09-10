@@ -33,6 +33,8 @@ In order to get Raspberry Pi OS ready there are some changes we need to make:
 ```
 $ git clong https://github.com/jeffvader84/piHunter
 $ cd piHunter
+```
+ * Now edit GeoIP.conf and suricata.yaml.original
 $ sudo chmod +x boot.sh
 $ sudo su
 # ./boot.sh
@@ -58,10 +60,7 @@ $ vi suricata.yml.original
 
 **For Geo Location on IPs
 Follow instructions @ https://arkime.com/faq#maxmind**
-```
-$ sudo cp /etc/GeoIP.conf /etc/GeoIP.conf.original
-$ sudo mv /path/to/new/GeoIP.conf /etc/GeoIP.conf
-$ sudo geoipupdate
+
 ```
 *Default log output goes to hunter home folder.  To change, edit variable at top of startup script for log locaiton and name*
 
