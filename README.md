@@ -20,6 +20,7 @@ Using the instructions below and pre-configured config files/scripts provided, y
 9. External Harddrive (1 TB Recommended) 
 
 **Default Login Credentials:**
+
 RaspberryPi -> hunter:pihunter
 Elastic stack -> elastic:pihunter
 Arkime -> hunter:pihunter
