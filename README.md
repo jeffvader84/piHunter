@@ -19,6 +19,10 @@ Using the instructions below and pre-configured config files/scripts provided, y
 7. Switch with Port Mirroring capabilities
 9. External Harddrive (1 TB Recommended) 
 
+**Default Login Credentials:**
+RaspberryPi -> hunter:pihunter
+Elastic stack -> elastic:pihunter
+Arkime -> hunter:pihunter
 
 ### Initial Boot and Configuring the Pi
 
@@ -63,7 +67,7 @@ sudo userdel -r pi
 
 ### Verify Install
 ```
-$ tail -f boot.log
+$ tail -f pihunter-boot.log
 ```
 * Watch the log and look for any errors
 * If all services startup properly login to ElasticStack and Arkime
