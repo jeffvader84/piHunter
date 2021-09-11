@@ -1,3 +1,4 @@
+
 # piHunter | Version 1.3.4 (Beta)
 > Data Driven Threat Hunting on the RaspberryPi
 
@@ -6,7 +7,7 @@
 Using the instructions below and pre-configured config files/scripts provided, you can setup a Raspberry Pi to collect full-packet captures on your network then index, normalize, and search through your data to find anamolies.  All the data and tools needed to deep dive into any irregularity or weird activity is ready to go!  A good threat hunting device has both GUI tools and multiple Living off the Land (LOL) tools.
 
 *Average system mem usage is 6.40GB*
-<img width="813" alt="pihunter-htop" src="https://user-images.githubusercontent.com/22893767/125179553-bc08fa80-e1b4-11eb-8a2d-1b58a660de41.png">
+<img width="818" alt="Screen Shot 2021-09-11 at 8 06 21 AM" src="https://user-images.githubusercontent.com/22893767/132939874-ac93978b-4d30-47f6-9022-cb781feee21b.png">
 
 **Hardware/Software list:**
 1. Raspberry Pi 4B 8GB
