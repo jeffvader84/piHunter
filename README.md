@@ -39,7 +39,7 @@ In order to get Raspberry Pi OS ready there are some changes we need to make:
 $ sudo apt install git vim -y
 $ sudo apt update -y && sudo apt upgrade -yy
 $ sudo reboot
-$ git clong https://github.com/jeffvader84/piHunter
+$ git clone https://github.com/jeffvader84/piHunter
 $ cd piHunter
 ```
  * Edit suricata.yaml.original by commenting out the HOME_NET variables at the top and created a HOME_NET with your Private IP range.  Hint: most home routers use a /24 CIDR range.  Ex: 192.168.1.0/24
