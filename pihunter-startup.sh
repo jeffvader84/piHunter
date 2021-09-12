@@ -9,6 +9,7 @@ ARKIMEVIEW='arkimeviewer'
 FILEBEAT='filebeat'
 KBNAME='kibana'
 ESNAME='elasticsearch'
+MONGOD='mongodb'
 LOGDIR='/home/hunter/pihunter-boot.log'
 
 # var - stop
@@ -76,7 +77,7 @@ cmdStart $ZEEK 10
 sysdStart $SURICATA 10
 
 # start elasticsearch
-dockerStart $ESNAME 60
+dockerStart $ESNAME 120
 
 # start arkime
 sysdStart $ARKIMECAP 30
@@ -87,6 +88,9 @@ sysdStart $FILEBEAT 15
 
 # start kibana
 dockerStart $KBNAME 60
+
+# start mongodb
+dockerStart $MONGOD 10
 
 echo "`date` piHunter services are up and ready to HUNT!" >> $LOGDIR
 echo "============================ ===========================================" >> $LOGDIR
