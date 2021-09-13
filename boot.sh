@@ -400,7 +400,7 @@ docker run -d --name kibana --net huntnet -p 5601:5601 -v /hunt-xs/elastic/kb-da
 # sleep to allow kibana container to spin up
 sleep 60
 
-docker stop kibana
+#docker stop kibana
 logEnd "Elastic Stack"
 echo "##########################################################################"
 echo "####                          install Arkime                          ####"
@@ -446,8 +446,8 @@ echo "##########################################################################
 echo "####                         install Filebeat                         ####"
 echo "##########################################################################"
 logStart "Filebeat"
-docker start kibana
-sleep 120
+#docker start kibana
+#sleep 120
 wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.13.1-arm64.deb
 apt install ./filebeat-7.13.1-arm64.deb
 rm -rf filebeat-7.13.1-arm64.deb
