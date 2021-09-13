@@ -490,7 +490,7 @@ make && make install
 mkdir /etc/rita && chmod 755 /etc/rita
 mkdir -p /var/lib/rita/logs && chmod -R 755 /var/lib/rita
 # copy RITA config file into /etc/rita
-cp /home/hunter/piHunter/rita.yaml /etc/rita/config.yaml && chmod 666 /etc/rita/config.yaml
+cp /home/pi/piHunter/rita.yaml /etc/rita/config.yaml && chmod 666 /etc/rita/config.yaml
 rm -rf /home/hunter/rita/*
 rm -rf /home/hunter/rita.* 2>/dev/null
 rmdir /home/hunter/rita
