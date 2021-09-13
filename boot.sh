@@ -447,7 +447,7 @@ echo "####                         install Filebeat                         ####
 echo "##########################################################################"
 logStart "Filebeat"
 docker start kibana
-sleep 45
+sleep 120
 wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.13.1-arm64.deb
 apt install ./filebeat-7.13.1-arm64.deb
 rm -rf filebeat-7.13.1-arm64.deb
