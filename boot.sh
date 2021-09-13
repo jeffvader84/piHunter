@@ -480,7 +480,7 @@ docker run -d --name mongodb --network huntnet -p 27017:27017 mongo:4.2-rc
 # install Go Language
 wget https://golang.org/dl/go1.14.linux-arm64.tar.gz
 sudo tar -C /usr/local -xvzf go1.14.linux-arm64.tar.gz
-rm -rf golang.org/dl/go1.14.linux-arm64.tar.gz
+rm -rf /home/hunter/go1.14.linux-arm64.tar.gz
 # add /usr/local/go/bin to $PATH for both hunter and ROOT
 # clone RITA repo
 git clone https://github.com/activecm/rita.git
@@ -491,6 +491,9 @@ mkdir /etc/rita && chmod 755 /etc/rita
 mkdir -p /var/lib/rita/logs && chmod -R 755 /var/lib/rita
 # copy RITA config file into /etc/rita
 cp /home/hunter/piHunter/rita.yaml /etc/rita/config.yaml && chmod 666 /etc/rita/config.yaml
+rm -rf /home/hunter/rita/*
+rm -rf /home/hunter/rita.* 2>/dev/null
+rmdir /home/hunter/rita
 logEnd "RITA install"
 logStart "Run-RITA-Run install"
 # install Run-RITA-Run
@@ -500,7 +503,7 @@ chmod +x run-rita-run.sh
 cp run-rita-run.sh /usr/local/bin/run-rita-run
 cd ..
 rm -rf run-rita-run/*
-rm -rf run-rita-run/.*
+rm -rf run-rita-run/.* 2>/dev/null
 rmdir run-rita-run
 logEnd "Run-RITA-Run"
 
@@ -509,7 +512,7 @@ logStart "Setup Cron Job to startup services from system boot"
 chmod +x /home/pi/piHunter/pihunter-startup.sh
 mv /home/pi/piHunter/pihunter-startup.sh /home/hunter
 chown hunter:hunter /home/hunter/pihunter-startup.sh
-echo "@reboot /home/hunter/pihunter-startup.sh" >> /var/spool/cron/crontabs/root
+echo "@reboot sleep 10 && /home/hunter/pihunter-startup.sh" >> /var/spool/cron/crontabs/root
 logEnd "Setup Cron Job to startup services from system boot"
 
 echo "[!] reboot the system, login as user hunter and run the following command"
