@@ -17,7 +17,7 @@ Using the instructions below and pre-configured config files/scripts provided, y
 5. Ethernet Cable (2x)
 6. USB 3.0 Ethernet Adaptor
 7. Switch with Port Mirroring capabilities
-9. External Harddrive (1 TB Recommended) 
+9. External Harddrive (1 TB or more Recommended) 
 
 **Default Login Credentials:**
 - RaspberryPi -> hunter:pihunter
