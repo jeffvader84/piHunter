@@ -36,7 +36,7 @@ In order to get Raspberry Pi OS ready there are some changes we need to make:
 * Next clone the Git repo
 ```
 $ sudo apt install git vim -y
-$ sudo apt update -y && sudo apt upgrade -yy
+$ sudo apt update -y && sudo apt upgrade -y
 $ sudo reboot
 $ git clone https://github.com/jeffvader84/piHunter
 $ cd piHunter
