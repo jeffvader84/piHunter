@@ -8,8 +8,6 @@ Using the instructions below and pre-configured config files/scripts provided, y
 
 *Average system mem usage is ~6.50-6.60GB*![Screenshot from 2021-09-13 13-04-09](https://user-images.githubusercontent.com/22893767/133081292-6701d0d7-3a80-4423-863c-80bc48f6fafa.png)
 
-<img width="818" alt="Screen Shot 2021-09-11 at 8 06 21 AM" src="https://user-images.githubusercontent.com/22893767/132939874-ac93978b-4d30-47f6-9022-cb781feee21b.png">
-
 **Hardware/Software list:**
 1. Raspberry Pi 4B 8GB
 2. Micro SD Card 64 GB (128 GB Recommended)
