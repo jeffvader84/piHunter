@@ -11,7 +11,7 @@ Using the instructions below and pre-configured config files/scripts provided, y
 
 **Hardware/Software list:**
 1. Raspberry Pi 4B 8GB
-2. Micro SD Card 32 GB (64 GB Recommended)
+2. Micro SD Card 64 GB (128 GB Recommended)
 3. [BalenaEtcher](https://www.balena.io/etcher/)
 4. [RaspberryPi OS Lite 64-Bit](https://downloads.raspberrypi.org/raspios_lite_arm64/images/)
 5. Ethernet Cable (2x)
