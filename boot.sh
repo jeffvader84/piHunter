@@ -106,7 +106,7 @@ echo ""
 # update pi / install required packages
 logStart "Begin updates and package dependencies installation"
 apt update -y
-apt install htop gdisk tmux vim git prads tcpdump net-tools scapy tshark foremost yara '^libssl1.0.[0-9]$' libunwind8 network-manager -y && sudo apt upgrade -y
+apt install htop tmux vim git prads tcpdump net-tools scapy tshark foremost yara '^libssl1.0.[0-9]$' libunwind8 network-manager -y && sudo apt upgrade -y
 logEnd "Updates and package dependencies installation"
 
 echo "##########################################################################"
@@ -491,9 +491,11 @@ mkdir /etc/rita && chmod 755 /etc/rita
 mkdir -p /var/lib/rita/logs && chmod -R 755 /var/lib/rita
 # copy RITA config file into /etc/rita
 cp /home/pi/piHunter/rita.yaml /etc/rita/config.yaml && chmod 666 /etc/rita/config.yaml
+cd /home/hunter
 rm -rf /home/hunter/rita/*
 rm -rf /home/hunter/rita.* 2>/dev/null
 rmdir /home/hunter/rita
+# python -m SimpleHTTPServer 8080 > /dev/null 2>&1 &
 logEnd "RITA install"
 logStart "Run-RITA-Run install"
 # install Run-RITA-Run
@@ -512,7 +514,7 @@ logStart "Setup Cron Job to startup services from system boot"
 chmod +x /home/pi/piHunter/pihunter-startup.sh
 mv /home/pi/piHunter/pihunter-startup.sh /home/hunter
 chown hunter:hunter /home/hunter/pihunter-startup.sh
-echo "@reboot sleep 10 && /home/hunter/pihunter-startup.sh" >> /var/spool/cron/crontabs/root
+echo "@reboot sleep 10 && bash /home/hunter/pihunter-startup.sh" >> /var/spool/cron/crontabs/root
 logEnd "Setup Cron Job to startup services from system boot"
 
 echo "[!] reboot the system, login as user hunter and run the following command"
