@@ -515,6 +515,7 @@ chmod +x /home/pi/piHunter/pihunter-startup.sh
 mv /home/pi/piHunter/pihunter-startup.sh /home/hunter
 chown hunter:hunter /home/hunter/pihunter-startup.sh
 echo "@reboot sleep 10 && bash /home/hunter/pihunter-startup.sh" >> /var/spool/cron/crontabs/root
+systemctl restart cron.service
 logEnd "Setup Cron Job to startup services from system boot"
 
 echo "[!] reboot the system, login as user hunter and run the following command"
