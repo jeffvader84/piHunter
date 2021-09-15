@@ -67,6 +67,12 @@ cmdStart() {
 # def func - stop
 
 # script - start
+if [ -e /home/hunter/pihunter-boot.log ];
+then
+	echo "Log exists" > /dev/null
+else
+	echo "============================ ===========================================" >> $LOGDIR
+fi
 
 echo "`date` piHunter services starting... standby..." >> $LOGDIR
 
