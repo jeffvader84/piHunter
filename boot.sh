@@ -144,7 +144,7 @@ read -p 'Enter the router IP: ' ROUTERIP
 echo "[!] Select an interface from the following list:"
 ifconfig | grep -E 'eth[0-9]' | cut -d : -f 1
 sleep 1
-read -p 'Select a management interface from list above [ if using a USB ethenet adaptor, this is the recommended interface ]: ' INTERFACE
+read -p 'Select a management interface from list above [ if using a USB ethernet adaptor, this is the recommended interface ]: ' INTERFACE
 read -p 'Select a monitor interface from list above [ built in ethernet interface is recommended ]: ' MONINTERFACE
 echo ""
 
@@ -173,6 +173,11 @@ docker stop hello-world
 docker container rm hello-world
 rm -rf /home/hunter/get-docker.sh
 logEnd "Docker configure/test"
+
+
+echo "##########################################################################"
+echo "####                       configure System                           ####"
+echo "##########################################################################"
 
 # Disable auto-run daemons from recent installs
 systemctl stop prads
@@ -565,6 +570,11 @@ rm -rf run-rita-run/*
 rm -rf run-rita-run/.* 2>/dev/null
 rmdir run-rita-run
 logEnd "Run-RITA-Run"
+
+
+echo "##########################################################################"
+echo "####                       configure Persistence                      ####"
+echo "##########################################################################"
 
 # Setup Cron Job to bring services up from a system reboot
 logStart "Setup Cron Job to startup services from system boot"
