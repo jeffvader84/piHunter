@@ -78,7 +78,6 @@ $ sudo su
 
 *Default user and password for Arkime is hunter:pihunter*
 
-```
 *Default log output goes to hunter home folder.  To change, edit variable at top of startup script for log locaiton and name*
 
 ### Verify Install
