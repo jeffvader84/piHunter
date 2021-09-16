@@ -2,30 +2,18 @@
 # piHunter | Version 1.4.8 (Beta)
 > Data Driven Threat Hunting on the RaspberryPi
 
-## Utilizes open source tools and turn a Raspberry Pi into a threat hunting device.
+## Utilize open source tools and turn a Raspberry Pi into a threat hunting device.
 
 Using the instructions below you can setup a Raspberry Pi to collect full-packet captures on your network then index, normalize, and search through your data to find anamolies.  All the data and tools needed to deep dive into any irregularity or weird activity is ready to go!  A good threat hunting device has both GUI tools and multiple Living off the Land (LOL) tools.  
 
 piHunter will optimize the RaspberryPi to run all of the following tools:
 
--Arkime (Moloch)
--Elastic Stack:
-  *Elasticsearch
-  *Kibana
-  *Filebeat
-  *Winlogbeats (coming soon)
- -Suricata
- -Zeek (Bro)
- -RITA
- -tcpdump
- -prads
- -tshark
- -strings
- -yara
- -python
- -scapy
- -PowerShell
- -foremost
+| Arkime (Moloch)  | Suricata | Zeek (Bro) | Elasticsearch | Kibana  |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| Filebeat | Winlogbeats (TBD)  | RITA  | Run-RITA-Run | tcpdump |
+| tshark | prads | strings | yara | python |
+| scapy | PowerShell | foremost | Nmap |
+
 
 *Average system mem usage is ~6.50-6.60GB*![Screenshot from 2021-09-13 13-04-09](https://user-images.githubusercontent.com/22893767/133081292-6701d0d7-3a80-4423-863c-80bc48f6fafa.png)
 
@@ -72,13 +60,9 @@ $ sudo su
 ```
 **Reboot the system!**
 
-**Login as the new user: hunter**
-
-**Default username:password is hunter:pihunter**
-
-*Default user and password for Arkime is hunter:pihunter*
-
-*Default log output goes to hunter home folder.  To change, edit variable at top of startup script for log locaiton and name*
+```
+ssh hunter@your-static-IP
+```
 
 ### Verify Install
 ```
