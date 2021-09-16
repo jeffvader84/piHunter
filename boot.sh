@@ -33,9 +33,29 @@ logEnd() {
           return 1
   fi
 }
+
+# ascii art
+asciiArt() {
+	echo '      ___                       ___           ___           ___           ___           ___           ___     '
+	echo '     /\  \          ___        /\__\         /\__\         /\__\         /\  \         /\  \         /\  \    '
+	echo '    /::\  \        /\  \      /:/  /        /:/  /        /::|  |        \:\  \       /::\  \       /::\  \   '
+	echo '   /:/\:\  \       \:\  \    /:/__/        /:/  /        /:|:|  |         \:\  \     /:/\:\  \     /:/\:\  \  '
+	echo '  /::\~\:\  \      /::\__\  /::\  \ ___   /:/  /  ___   /:/|:|  |__       /::\  \   /::\~\:\  \   /::\~\:\  \ '
+	echo ' /:/\:\ \:\__\  __/:/\/__/ /:/\:\  /\__\ /:/__/  /\__\ /:/ |:| /\__\     /:/\:\__\ /:/\:\ \:\__\ /:/\:\ \:\__\'
+	echo ' \/__\:\/:/  / /\/:/  /    \/__\:\/:/  / \:\  \ /:/  / \/__|:|/:/  /    /:/  \/__/ \:\~\:\ \/__/ \/_|::\/:/  /'
+	echo '      \::/  /  \::/__/          \::/  /   \:\  /:/  /      |:/:/  /    /:/  /       \:\ \:\__\      |:|::/  / '
+	echo '       \/__/    \:\__\          /:/  /     \:\/:/  /       |::/  /     \/__/         \:\ \/__/      |:|\/__/  '
+	echo '                 \/__/         /:/  /       \::/  /        /:/  /                     \:\__\        |:|  |    '
+	echo '                               \/__/         \/__/         \/__/                       \/__/         \|__|    '
+
+}
+
 # def func - end
 
 # script - start
+
+asciiArt
+sleep 3
 
 if [ $WHOAMI -gt 0 ]; then
 	echo -e "${RED}You must use sudo to run this script.${OFF}"
@@ -515,8 +535,8 @@ chmod +x /home/pi/piHunter/pihunter-startup.sh
 mv /home/pi/piHunter/pihunter-startup.sh /home/hunter
 chown hunter:hunter /home/hunter/pihunter-startup.sh
 echo "@reboot sleep 10 && /home/hunter/pihunter-startup.sh" >> /var/spool/cron/crontabs/root
-chmod -R 600 /var/spool/cron/crontabs/root
-chmod -R 600 /var/spool/cron/crontabs/hunter
+sudo chmod -R 600 /var/spool/cron/crontabs/root
+sudo chmod -R 600 /var/spool/cron/crontabs/hunter
 logEnd "Setup Cron Job to startup services from system boot"
 
 echo "[!] reboot the system, login as user hunter and run the following command"
