@@ -1,5 +1,5 @@
 
-# piHunter | Version 1.4.5 (Beta)
+# piHunter | Version 1.4.6 (Beta)
 > Data Driven Threat Hunting on the RaspberryPi
 
 ## Utilizes open source tools and turn a Raspberry Pi into a threat hunting device.
