@@ -1,5 +1,5 @@
 
-# piHunter | Version 1.4.7 (Beta)
+# piHunter | Version 1.4.8 (Beta)
 > Data Driven Threat Hunting on the RaspberryPi
 
 ## Utilizes open source tools and turn a Raspberry Pi into a threat hunting device.
@@ -51,10 +51,6 @@ $ sudo su
 # ./boot.sh
 ```
 **Reboot the system!**
- * Login as hunter using default password: pihunter
-```
-sudo userdel -r pi
-```
 
 **Login as the new user: hunter**
 
