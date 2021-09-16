@@ -481,7 +481,7 @@ docker run -d --name mongodb --network huntnet -p 27017:27017 mongo:4.2-rc
 wget https://golang.org/dl/go1.14.linux-arm64.tar.gz
 sudo tar -C /usr/local -xvzf go1.14.linux-arm64.tar.gz
 rm -rf /home/hunter/go1.14.linux-arm64.tar.gz
-# add /usr/local/go/bin to $PATH for both hunter and ROOT
+# added /usr/local/go/bin to $PATH for both hunter and ROOT during Zeek install
 # clone RITA repo
 git clone https://github.com/activecm/rita.git
 cd rita
