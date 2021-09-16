@@ -116,7 +116,7 @@ echo -e "\n" >> /home/hunter/.profile
 echo "# conditional to delete user pi after piHunter install" >> /home/hunter/.profile
 echo 'if [[ -n `cat /etc/passwd | grep pi` ]]' >> /home/hunter/.profile
 echo 'then' >> /home/hunter/.profile
-echo '	userdel -r pi' >> /home/hunter/.profile
+echo '	sudo userdel -r pi' >> /home/hunter/.profile
 echo 'fi' >> /home/hunter/.profile
 
 # set variable for external storage setup
@@ -144,14 +144,14 @@ read -p 'Enter the router IP: ' ROUTERIP
 echo "[!] Select an interface from the following list:"
 ifconfig | grep -E 'eth[0-9]' | cut -d : -f 1
 sleep 1
-read -p 'Select a management interface from list above [ built in ethernet interface is recommended ]: ' INTERFACE
-read -p 'Select a monitor interface from list above: ' MONINTERFACE
+read -p 'Select a management interface from list above [ if using a USB ethenet adaptor, this is the recommended interface ]: ' INTERFACE
+read -p 'Select a monitor interface from list above [ built in ethernet interface is recommended ]: ' MONINTERFACE
 echo ""
 
 # update pi / install required packages
 logStart "Begin updates and package dependencies installation"
 apt update -y
-apt install htop tmux vim git prads tcpdump net-tools scapy tshark foremost yara '^libssl1.0.[0-9]$' libunwind8 network-manager -y && sudo apt upgrade -y
+apt install htop gdisk tmux vim git prads tcpdump net-tools scapy tshark foremost yara '^libssl1.0.[0-9]$' libunwind8 network-manager -y && sudo apt upgrade -y
 logEnd "Updates and package dependencies installation"
 
 echo "##########################################################################"
