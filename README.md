@@ -32,8 +32,7 @@ In order to get Raspberry Pi OS ready there are some changes we need to make:
 * Setup port mirroring on the switch to mirror all traffic on the port you are using for the built in ethernet connection on the RaspberryPi
 * Plug the External HDD (HDD) into the RaspberryPi.  
 * Turn on your RaspberryPi and connect to it via SSH
-* Install Git and Vim
-* Next clone the Git repo
+* Run the following commands:
 ```
 $ sudo apt install git vim -y
 $ sudo apt update -y && sudo apt upgrade -y
