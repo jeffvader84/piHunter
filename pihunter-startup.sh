@@ -83,7 +83,7 @@ cmdStart $ZEEK 10
 sysdStart $SURICATA 10
 
 # start elasticsearch
-dockerStart $ESNAME 60
+dockerStart $ESNAME 90
 
 # start arkime
 sysdStart $ARKIMECAP 30
