@@ -54,9 +54,9 @@ asciiArt() {
 
 # script - start
 
-echo -e "\r\r\r"
+echo -e "\n\n\n"
 asciiArt
-echo -e "\r\r\r"
+echo -e "\n\n\n"
 sleep 3
 
 if [ $WHOAMI -gt 0 ]; then
