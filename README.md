@@ -40,7 +40,7 @@ $ sudo reboot
 $ git clone https://github.com/jeffvader84/piHunter
 $ cd piHunter
 ```
- * Edit suricata.yaml.original by commenting out the HOME_NET variables at the top and created a HOME_NET with your Private IP range.  Hint: most home routers use a /24 CIDR range.  Ex: 192.168.1.0/24
+ * Edit suricata.yaml.original by creating or editing a HOME_NET with your Private IP range.  Hint: most home routers use a /24 CIDR range.  Ex: 192.168.1.0/24
  * Edit rita.yaml and add your network range to the list under 'InternalSubnets'
  * Now follow sets 1,2,4-6 [here](https://arkime.com/faq#maxmind): then either copy your config file over to the Pi and replace the GeoIP.conf in the Git repo or edit the GeoIP.conf in this Git repo and add your AccountID and LicenseKey. 
  * Now make the boot script executable, change to root, and run the script!
