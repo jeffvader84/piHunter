@@ -6,23 +6,24 @@
 
 Using the instructions below you can setup a Raspberry Pi to collect full-packet captures on your network then index, normalize, and search through your data to find anamolies.  All the data and tools needed to deep dive into any irregularity or weird activity is ready to go!  A good threat hunting device has both GUI tools and multiple Living off the Land (LOL) tools.  PiHunter will optimize the RaspberryPi to run all of the following tools:
 
-Arkime (Moloch)
-Elastic Stack:
-  Elasticsearch
-  Kibana
-  Filebeat
-  Winlogbeats (coming soon)
- Suricata
- Zeek (Bro)
- RITA
- tcpdump
- prads
- tshark
- strings
- yara
- python
- PowerShell
- 
+-Arkime (Moloch)
+-Elastic Stack:
+  >Elasticsearch
+  >Kibana
+  >Filebeat
+  >Winlogbeats (coming soon)
+ -Suricata
+ -Zeek (Bro)
+ -RITA
+ -tcpdump
+ -prads
+ -tshark
+ -strings
+ -yara
+ -python
+ -scapy
+ -PowerShell
+ -foremost
 
 *Average system mem usage is ~6.50-6.60GB*![Screenshot from 2021-09-13 13-04-09](https://user-images.githubusercontent.com/22893767/133081292-6701d0d7-3a80-4423-863c-80bc48f6fafa.png)
 
@@ -87,19 +88,6 @@ $ tail -f pihunter-boot.log
 * Verify data is coming in by going to http://your-static-IP:5601 and http://your-static-IP:8005
 * Start hunting!
 
-### Winlogbeats
-
-**COMING SOON...**
-
 ### Screen Shots
 
-**Arkime**
-<img width="1267" alt="pihunter_arkime" src="https://user-images.githubusercontent.com/22893767/125179533-79472280-e1b4-11eb-8ead-51648a94e9f1.png">
-
-
-**Kibana Zeek Default Dashboard**
-<img width="1280" alt="pihunter-zeek" src="https://user-images.githubusercontent.com/22893767/125179534-7fd59a00-e1b4-11eb-9c28-0d1365401387.png">
-
-
-**Kibana Suricata Default Dashboard**
-<img width="1280" alt="pihunter-suricata" src="https://user-images.githubusercontent.com/22893767/125179538-82d08a80-e1b4-11eb-80cf-bc3b47f43092.png">
+**COMING SOON...**
