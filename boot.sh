@@ -56,6 +56,7 @@ asciiArt() {
 
 echo -e "\r\r\r"
 asciiArt
+echo -e "\r\r\r"
 sleep 3
 
 if [ $WHOAMI -gt 0 ]; then
