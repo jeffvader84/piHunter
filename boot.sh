@@ -151,7 +151,7 @@ echo ""
 # update pi / install required packages
 logStart "Begin updates and package dependencies installation"
 apt update -y
-apt install htop gdisk tmux vim git prads tcpdump net-tools scapy tshark foremost yara '^libssl1.0.[0-9]$' libunwind8 network-manager -y && sudo apt upgrade -y
+apt install htop gdisk tmux vim git prads tcpdump net-tools scapy nmap tshark foremost yara '^libssl1.0.[0-9]$' libunwind8 network-manager -y && sudo apt upgrade -y
 logEnd "Updates and package dependencies installation"
 
 echo "##########################################################################"
