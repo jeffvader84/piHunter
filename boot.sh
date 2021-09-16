@@ -54,6 +54,7 @@ asciiArt() {
 
 # script - start
 
+echo -e "\r\r\r"
 asciiArt
 sleep 3
 
