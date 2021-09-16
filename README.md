@@ -4,14 +4,16 @@
 
 ## Utilizes open source tools and turn a Raspberry Pi into a threat hunting device.
 
-Using the instructions below you can setup a Raspberry Pi to collect full-packet captures on your network then index, normalize, and search through your data to find anamolies.  All the data and tools needed to deep dive into any irregularity or weird activity is ready to go!  A good threat hunting device has both GUI tools and multiple Living off the Land (LOL) tools.  PiHunter will optimize the RaspberryPi to run all of the following tools:
+Using the instructions below you can setup a Raspberry Pi to collect full-packet captures on your network then index, normalize, and search through your data to find anamolies.  All the data and tools needed to deep dive into any irregularity or weird activity is ready to go!  A good threat hunting device has both GUI tools and multiple Living off the Land (LOL) tools.  
+
+piHunter will optimize the RaspberryPi to run all of the following tools:
 
 -Arkime (Moloch)
 -Elastic Stack:
-  >Elasticsearch
-  >Kibana
-  >Filebeat
-  >Winlogbeats (coming soon)
+  *Elasticsearch
+  *Kibana
+  *Filebeat
+  *Winlogbeats (coming soon)
  -Suricata
  -Zeek (Bro)
  -RITA
