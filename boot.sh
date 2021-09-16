@@ -99,17 +99,23 @@ sleep 2
 # add ascii Art to hunter login
 echo -e "\n" >> /home/hunter/.profile
 echo "# ascii Art piHunter on login" >> /home/hunter/.profile
-echo '      ___                       ___           ___           ___           ___           ___           ___     ' >> /home/hunter/.profile
-echo '     /\  \          ___        /\__\         /\__\         /\__\         /\  \         /\  \         /\  \    ' >> /home/hunter/.profile
-echo '    /::\  \        /\  \      /:/  /        /:/  /        /::|  |        \:\  \       /::\  \       /::\  \   ' >> /home/hunter/.profile
-echo '   /:/\:\  \       \:\  \    /:/__/        /:/  /        /:|:|  |         \:\  \     /:/\:\  \     /:/\:\  \  ' >> /home/hunter/.profile
-echo '  /::\~\:\  \      /::\__\  /::\  \ ___   /:/  /  ___   /:/|:|  |__       /::\  \   /::\~\:\  \   /::\~\:\  \ ' >> /home/hunter/.profile
-echo ' /:/\:\ \:\__\  __/:/\/__/ /:/\:\  /\__\ /:/__/  /\__\ /:/ |:| /\__\     /:/\:\__\ /:/\:\ \:\__\ /:/\:\ \:\__\' >> /home/hunter/.profile
-echo ' \/__\:\/:/  / /\/:/  /    \/__\:\/:/  / \:\  \ /:/  / \/__|:|/:/  /    /:/  \/__/ \:\~\:\ \/__/ \/_|::\/:/  /' >> /home/hunter/.profile
-echo '      \::/  /  \::/__/          \::/  /   \:\  /:/  /      |:/:/  /    /:/  /       \:\ \:\__\      |:|::/  / ' >> /home/hunter/.profile
-echo '       \/__/    \:\__\          /:/  /     \:\/:/  /       |::/  /     \/__/         \:\ \/__/      |:|\/__/  ' >> /home/hunter/.profile
-echo '                 \/__/         /:/  /       \::/  /        /:/  /                     \:\__\        |:|  |    ' >> /home/hunter/.profile
-echo '                               \/__/         \/__/         \/__/                       \/__/         \|__|    ' >> /home/hunter/.profile
+echo "echo ''" >> /home/hunter/.profile
+echo "echo ''" >> /home/hunter/.profile
+echo "echo ''" >> /home/hunter/.profile
+echo "echo '      ___                       ___           ___           ___           ___           ___           ___     '" >> /home/hunter/.profile
+echo "echo '     /\  \          ___        /\__\         /\__\         /\__\         /\  \         /\  \         /\  \    '" >> /home/hunter/.profile
+echo "echo '    /::\  \        /\  \      /:/  /        /:/  /        /::|  |        \:\  \       /::\  \       /::\  \   '" >> /home/hunter/.profile
+echo "echo '   /:/\:\  \       \:\  \    /:/__/        /:/  /        /:|:|  |         \:\  \     /:/\:\  \     /:/\:\  \  '" >> /home/hunter/.profile
+echo "echo '  /::\~\:\  \      /::\__\  /::\  \ ___   /:/  /  ___   /:/|:|  |__       /::\  \   /::\~\:\  \   /::\~\:\  \ '" >> /home/hunter/.profile
+echo "echo ' /:/\:\ \:\__\  __/:/\/__/ /:/\:\  /\__\ /:/__/  /\__\ /:/ |:| /\__\     /:/\:\__\ /:/\:\ \:\__\ /:/\:\ \:\__\'" >> /home/hunter/.profile
+echo "echo ' \/__\:\/:/  / /\/:/  /    \/__\:\/:/  / \:\  \ /:/  / \/__|:|/:/  /    /:/  \/__/ \:\~\:\ \/__/ \/_|::\/:/  /'" >> /home/hunter/.profile
+echo "echo '      \::/  /  \::/__/          \::/  /   \:\  /:/  /      |:/:/  /    /:/  /       \:\ \:\__\      |:|::/  / '" >> /home/hunter/.profile
+echo "echo '       \/__/    \:\__\          /:/  /     \:\/:/  /       |::/  /     \/__/         \:\ \/__/      |:|\/__/  '" >> /home/hunter/.profile
+echo "echo '                 \/__/         /:/  /       \::/  /        /:/  /                     \:\__\        |:|  |    '" >> /home/hunter/.profile
+echo "echo '                               \/__/         \/__/         \/__/                       \/__/         \|__|    '" >> /home/hunter/.profile
+echo "echo ''" >> /home/hunter/.profile
+echo "echo ''" >> /home/hunter/.profile
+echo "echo ''" >> /home/hunter/.profile
 echo -e "\n" >> /home/hunter/.profile
 
 # add conditional to delete user pi
@@ -117,6 +123,8 @@ echo "# conditional to delete user pi after piHunter install" >> /home/hunter/.p
 echo 'if [[ -n `cat /etc/passwd | grep pi` ]]' >> /home/hunter/.profile
 echo 'then' >> /home/hunter/.profile
 echo '	sudo userdel -r pi' >> /home/hunter/.profile
+echo 'else' >> /home/hunter/.profile
+echo '	echo "user pi already deleted" > /dev/null' >> /home/hunter/.profile
 echo 'fi' >> /home/hunter/.profile
 
 # set variable for external storage setup
@@ -242,7 +250,6 @@ echo "domain home" >> /etc/resolve.conf
 echo "nameserver $HDNS" >> /etc/resolv.conf
 
 # set static IPs
-# [ FEATRUE UPDATE ]add loop for multiple interfaces
 echo "interface $INTERFACE" >> /etc/dhcpcd.conf
 echo "static ip_address=$HIP/24" >> /etc/dhcpcd.conf
 echo "static routers=$ROUTERIP" >> /etc/dhcpcd.conf
@@ -262,8 +269,8 @@ echo " down ip link set $MONINTERFACE promisc off" >> /etc/network/interfaces
 echo " down ip link set $MONINTERFACE down" >> /etc/network/interfaces
 
 # disable ipv6
-net.ipv6.conf.$INTERFACE.disable_ipv6 = 1
-net.ipv6.conf.$MONINTERFACE.disable_ipv6 = 1
+echo "net.ipv6.conf.$INTERFACE.disable_ipv6 = 1" >> /etc/sysctl.conf
+echo "net.ipv6.conf.$MONINTERFACE.disable_ipv6 = 1" >> /etc/sysctl.conf
 
 # edit network/interfaces file
 echo "" >> /etc/network/interfaces
@@ -456,11 +463,11 @@ chmod 777 -R /hunt-xs/elastic
 
 docker run -d --name elasticsearch --net huntnet -p 9200:9200 -p 9300:9300 -v /hunt-xs/elastic/es-data:/usr/share/elasticsearch/data -v /hunt-xs/elastic/es-logs:/usr/share/elasticsearch/logs -e "discovery.type=single-node" -e "xpack.security.enabled=true" -e ELASTIC_PASSWORD=$EPASSWD -e "cluster.name=piHunter" -e "node.name=piHunter.es" docker.elastic.co/elasticsearch/elasticsearch:7.13.1-arm64
 # sleep to allow elasticsearch container to spin up
-sleep 60
+sleep 120
 
 docker run -d --name kibana --net huntnet -p 5601:5601 -v /hunt-xs/elastic/kb-data:/usr/share/kibana/data -v /hunt-xs/elastic/kb-logs:/var/log -e "ELASTICSEARCH_HOSTS=http://elasticsearch:9200" -e "ELASTICSEARCH_URL=http://elasticsearch:9200" -e "xpack.security.enabled=true" -e "ELASTICSEARCH_USERNAME=elastic" -e "ELASTICSEARCH_PASSWORD=$EPASSWD" -e "node.name=piHunter.kb" docker.elastic.co/kibana/kibana:7.13.1-arm64
 # sleep to allow kibana container to spin up
-sleep 60
+sleep 90
 
 #docker stop kibana
 logEnd "Elastic Stack"
@@ -508,8 +515,6 @@ echo "##########################################################################
 echo "####                         install Filebeat                         ####"
 echo "##########################################################################"
 logStart "Filebeat"
-#docker start kibana
-#sleep 120
 wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.13.1-arm64.deb
 apt install ./filebeat-7.13.1-arm64.deb
 rm -rf filebeat-7.13.1-arm64.deb
@@ -555,7 +560,7 @@ mkdir -p /var/lib/rita/logs && chmod -R 755 /var/lib/rita
 cp /home/pi/piHunter/rita.yaml /etc/rita/config.yaml && chmod 666 /etc/rita/config.yaml
 cd /home/hunter
 rm -rf /home/hunter/rita/*
-rm -rf /home/hunter/rita.* 2>/dev/null
+rm -rf /home/hunter/rita/.* 2>/dev/null
 rmdir /home/hunter/rita
 # python -m SimpleHTTPServer 8080 > /dev/null 2>&1 &
 logEnd "RITA install"
@@ -570,7 +575,6 @@ rm -rf run-rita-run/*
 rm -rf run-rita-run/.* 2>/dev/null
 rmdir run-rita-run
 logEnd "Run-RITA-Run"
-
 
 echo "##########################################################################"
 echo "####                       configure Persistence                      ####"
@@ -587,7 +591,7 @@ sudo chmod -R 600 /var/spool/cron/crontabs/hunter
 logEnd "Setup Cron Job to startup services from system boot"
 
 echo "[!] reboot the system, login as user hunter and run the following command"
-echo "[!] sudo userdel -r pi"
+#echo "[!] sudo userdel -r pi"
 
 reboot
 # script - stop
