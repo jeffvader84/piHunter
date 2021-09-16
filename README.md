@@ -54,7 +54,7 @@ $ sudo su
 
 **Login as the new user: hunter**
 
-**Default username:password is hunter:pihunter (make changes if desiered)**
+**Default username:password is hunter:pihunter**
 
 *Default user and password for Arkime is hunter:pihunter*
 
