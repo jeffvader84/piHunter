@@ -57,7 +57,7 @@ asciiArt() {
 echo -e "\n\n\n"
 asciiArt
 echo -e "\n\n\n"
-sleep 3
+sleep 2
 
 if [ $WHOAMI -gt 0 ]; then
 	echo -e "${RED}You must use sudo to run this script.${OFF}"
@@ -96,6 +96,29 @@ echo -e "$EPASSWD\n$EPASSWD\n" | passwd hunter
 usermod -aG adm,dialout,cdrom,sudo,audio,video,plugdev,games,users,input,netdev,gpio,i2c,spi hunter
 sleep 2
 
+# add ascii Art to hunter login
+echo -e "\n" >> /home/hunter/.profile
+echo "# ascii Art piHunter on login" >> /home/hunter/.profile
+echo '      ___                       ___           ___           ___           ___           ___           ___     ' >> /home/hunter/.profile
+echo '     /\  \          ___        /\__\         /\__\         /\__\         /\  \         /\  \         /\  \    ' >> /home/hunter/.profile
+echo '    /::\  \        /\  \      /:/  /        /:/  /        /::|  |        \:\  \       /::\  \       /::\  \   ' >> /home/hunter/.profile
+echo '   /:/\:\  \       \:\  \    /:/__/        /:/  /        /:|:|  |         \:\  \     /:/\:\  \     /:/\:\  \  ' >> /home/hunter/.profile
+echo '  /::\~\:\  \      /::\__\  /::\  \ ___   /:/  /  ___   /:/|:|  |__       /::\  \   /::\~\:\  \   /::\~\:\  \ ' >> /home/hunter/.profile
+echo ' /:/\:\ \:\__\  __/:/\/__/ /:/\:\  /\__\ /:/__/  /\__\ /:/ |:| /\__\     /:/\:\__\ /:/\:\ \:\__\ /:/\:\ \:\__\' >> /home/hunter/.profile
+echo ' \/__\:\/:/  / /\/:/  /    \/__\:\/:/  / \:\  \ /:/  / \/__|:|/:/  /    /:/  \/__/ \:\~\:\ \/__/ \/_|::\/:/  /' >> /home/hunter/.profile
+echo '      \::/  /  \::/__/          \::/  /   \:\  /:/  /      |:/:/  /    /:/  /       \:\ \:\__\      |:|::/  / ' >> /home/hunter/.profile
+echo '       \/__/    \:\__\          /:/  /     \:\/:/  /       |::/  /     \/__/         \:\ \/__/      |:|\/__/  ' >> /home/hunter/.profile
+echo '                 \/__/         /:/  /       \::/  /        /:/  /                     \:\__\        |:|  |    ' >> /home/hunter/.profile
+echo '                               \/__/         \/__/         \/__/                       \/__/         \|__|    ' >> /home/hunter/.profile
+echo -e "\n" >> /home/hunter/.profile
+
+# add conditional to delete user pi
+echo "# conditional to delete user pi after piHunter install" >> /home/hunter/.profile
+echo 'if [[ -n `cat /etc/passwd | grep pi` ]]' >> /home/hunter/.profile
+echo 'then' >> /home/hunter/.profile
+echo '	userdel -r pi' >> /home/hunter/.profile
+echo 'fi' >> /home/hunter/.profile
+
 # set variable for external storage setup
 echo -e "Review the list of all storage connected to your RaspberryPi\n"
 lsblk
@@ -121,7 +144,7 @@ read -p 'Enter the router IP: ' ROUTERIP
 echo "[!] Select an interface from the following list:"
 ifconfig | grep -E 'eth[0-9]' | cut -d : -f 1
 sleep 1
-read -p 'Select a management interface from list above: ' INTERFACE
+read -p 'Select a management interface from list above [ built in ethernet interface is recommended ]: ' INTERFACE
 read -p 'Select a monitor interface from list above: ' MONINTERFACE
 echo ""
 
@@ -220,10 +243,22 @@ echo "static ip_address=$HIP/24" >> /etc/dhcpcd.conf
 echo "static routers=$ROUTERIP" >> /etc/dhcpcd.conf
 echo "static domain_name_servers=$HDNS" >> /etc/dhcpcd.conf
 
-echo "auto $INTERFACE" >> /etc/network/interfaces
-echo "iface $INTERFACE inet manual" >> /etc/network/interfaces
-echo " address $HIP/24" >> /etc/network/interfaces
-echo " gateway $ROUTERIP" >> /etc/network/interfaces
+# setup monitor interface
+echo -e "\n" >> /etc/dhcpcd.conf
+echo "# setup monitor interface" >> /etc/dhcpcd.conf
+echo "denyinterfaces eth0" >> /etc/dhcpcd.conf
+echo -e "\n" >> /etc/network/interfaces 
+echo "# setup monitor interface" >> /etc/network/interfaces
+echo "auto $MONINTERFACE" >> /etc/network/interfaces
+echo "iface $MONINTERFACE inet manual" >> /etc/network/interfaces
+echo " up ifconfig $MONINTERFACE 0.0.0.0 up" >> /etc/network/interfaces
+echo " up ip link set $MONINTERFACE promisc on" >> /etc/network/interfaces
+echo " down ip link set $MONINTERFACE promisc off" >> /etc/network/interfaces
+echo " down ip link set $MONINTERFACE down" >> /etc/network/interfaces
+
+# disable ipv6
+net.ipv6.conf.$INTERFACE.disable_ipv6 = 1
+net.ipv6.conf.$MONINTERFACE.disable_ipv6 = 1
 
 # edit network/interfaces file
 echo "" >> /etc/network/interfaces
