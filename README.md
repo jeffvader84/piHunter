@@ -58,7 +58,7 @@ $ sudo chmod +x boot.sh
 $ sudo su
 # ./boot.sh
 ```
-**Reboot the system!**
+**System will reboot after boot script finishes!**
 
 ```
 ssh hunter@your-static-IP
