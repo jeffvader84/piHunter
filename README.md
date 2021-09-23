@@ -1,5 +1,5 @@
 
-# piHunter | Version 1.4.8 (Beta)
+# piHunter | Version 1.4.9 (Beta)
 > Data Driven Threat Hunting on the RaspberryPi
 
 ## Utilize open source tools and turn a Raspberry Pi into a threat hunting device.
@@ -75,4 +75,12 @@ $ tail -f pihunter-boot.log
 
 ### Screen Shots
 
-**COMING SOON...**
+## Elastic Stack Login [http://your-static-ip:5601]
+![elastic](https://user-images.githubusercontent.com/22893767/134586340-442d4704-6e17-4e47-964c-0f03f7afd023.PNG)
+
+## Kibana Dashboard - Zeek
+![kibana](https://user-images.githubusercontent.com/22893767/134586370-148bb6c7-4021-4e5a-aa6a-63fd0f98947d.PNG)
+
+## Arkime [http://your-static-ip:8005]
+![arkime](https://user-images.githubusercontent.com/22893767/134586405-4b1b60c9-665a-4539-a1ab-478c388c8d38.PNG)
+
