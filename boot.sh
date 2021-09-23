@@ -586,6 +586,8 @@ chmod +x /home/pi/piHunter/pihunter-startup.sh
 mv /home/pi/piHunter/pihunter-startup.sh /home/hunter
 chown hunter:hunter /home/hunter/pihunter-startup.sh
 echo "@reboot sleep 10 && /home/hunter/pihunter-startup.sh" >> /var/spool/cron/crontabs/root
+echo "5 0 * * * run-rita-run -ir" >> /var/spool/cron/crontab/root
+echo "10 0 * * * run-rita-run -i" >> /var/spool/cron/crontab/root
 sudo chmod -R 600 /var/spool/cron/crontabs/root
 sudo chmod -R 600 /var/spool/cron/crontabs/hunter
 logEnd "Setup Cron Job to startup services from system boot"
