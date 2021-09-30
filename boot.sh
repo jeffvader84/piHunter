@@ -331,8 +331,8 @@ echo "This next part is going to take 2+ hours.  Get comfortable..."
 sudo ./configure --prefix=/hunt-xs/zeek && sudo make && sudo make install
 logEnd "Zeek build from source"
 
-echo "PATH=/hunt-xs/zeek/bin:/usr/local/go/bin:$PATH" >> /home/hunter/.profile
-echo "PATH=/hunt-xs/zeek/bin:/usr/local/go/bin:$PATH" >> /root/.profile
+echo "PATH=/hunt-xs/zeek/bin:/usr/local/go/bin:/usr/bin/powershell:$PATH" >> /home/hunter/.profile
+echo "PATH=/hunt-xs/zeek/bin:/usr/local/go/bin:/usr/bin/powershell:$PATH" >> /root/.profile
 echo "alias zeekctl='/hunt-xs/zeek/bin/zeekctl'" >> /root/.bashrc
 
 source /home/hunter/.profile
