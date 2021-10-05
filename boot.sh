@@ -542,7 +542,11 @@ echo "##########################################################################
 
 logStart "RITA install"
 docker pull mongo:4.0.27-rc0
+docker pull nginx
 docker run -d --name mongodb --network huntnet -p 27017:27017 mongo:4.2-rc
+mkdir /home/hunter/rita-html-report
+echo '<b>Hello, this is the default page installed by piHunter.  After you have rita data in your MongoDB, use run-rita-run -r to generate an HTML report.</b>' > /home/hunter/rita-html-report/index.html
+docker run -d --name rita-web -p 8080:80 -v /home/hunter/rita-html-report:/usr/share/nginx/html nginx
 
 # install Go Language
 wget https://golang.org/dl/go1.14.linux-arm64.tar.gz
