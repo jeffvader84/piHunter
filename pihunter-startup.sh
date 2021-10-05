@@ -10,6 +10,7 @@ FILEBEAT='filebeat'
 KBNAME='kibana'
 ESNAME='elasticsearch'
 MONGOD='mongodb'
+RITAWEB='rita-web'
 LOGDIR='/home/hunter/pihunter-boot.log'
 
 # var - stop
@@ -97,6 +98,9 @@ dockerStart $KBNAME 60
 
 # start mongodb
 dockerStart $MONGOD 10
+
+# start rita web server
+dockerStart $RITAWEB 10
 
 echo "`date` piHunter services are up and ready to HUNT!" >> $LOGDIR
 echo "============================ ===========================================" >> $LOGDIR
