@@ -1,5 +1,5 @@
 
-# piHunter | Version 1.4.10 (Beta)
+# piHunter | Version 1.4.11 (Beta)
 > Data Driven Threat Hunting on the RaspberryPi
 
 ## Utilize open source tools and turn a Raspberry Pi into a threat hunting device.
@@ -83,4 +83,7 @@ $ tail -f pihunter-boot.log
 
 ## Arkime [http://your-static-ip:8005]
 ![arkime](https://user-images.githubusercontent.com/22893767/134586405-4b1b60c9-665a-4539-a1ab-478c388c8d38.PNG)
+
+## RITA HTML Report [http://your-static-ip:8080]
+## Image pending
 
