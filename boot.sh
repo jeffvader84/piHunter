@@ -541,9 +541,11 @@ echo "####                           install RITA                           ####
 echo "##########################################################################"
 
 logStart "RITA install"
+mkdir /hunt-xs/rita
+chown -R hunter:hunter /hunt-xs/rita/
 docker pull mongo:4.0.27-rc0
 docker pull nginx
-docker run -d --name mongodb --network huntnet -p 27017:27017 mongo:4.2-rc
+docker run -d --name mongodb --network huntnet -p 27017:27017 -v /hunt-xs/rita:/data/db  mongo:4.2-rc
 mkdir /home/hunter/rita-html-report
 echo '<b>Hello, this is the default page installed by piHunter.  After you have rita data in your MongoDB, use run-rita-run -r to generate an HTML report.</b>' > /home/hunter/rita-html-report/index.html
 docker run -d --name rita-web -p 8080:80 -v /home/hunter/rita-html-report:/usr/share/nginx/html nginx
