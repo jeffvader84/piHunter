@@ -282,6 +282,9 @@ echo " gateway $ROUTERIP" >> /etc/network/interfaces
 # disable WiFi
 echo "nohook wpa_supplicant" >> /etc/dhcpcd.conf
 
+# change swappiness value
+echo "vm.swappiness = 20" >> /etc/sysctl.conf
+
 # external storage setup
 logStart "Mount point directory and External Storage setup"
 # delete any existing partition, then format the disk
