@@ -283,7 +283,7 @@ echo " gateway $ROUTERIP" >> /etc/network/interfaces
 echo "nohook wpa_supplicant" >> /etc/dhcpcd.conf
 
 # change swappiness value
-echo "vm.swappiness = 20" >> /etc/sysctl.conf
+echo "vm.swappiness = 30" >> /etc/sysctl.conf
 
 # external storage setup
 logStart "Mount point directory and External Storage setup"
