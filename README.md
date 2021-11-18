@@ -85,5 +85,4 @@ $ tail -f pihunter-boot.log
 ![arkime](https://user-images.githubusercontent.com/22893767/134586405-4b1b60c9-665a-4539-a1ab-478c388c8d38.PNG)
 
 ## RITA HTML Report [http://your-static-ip:8080]
-## Image pending
-
+![RITA]<img width="1278" alt="Screen Shot 2021-11-18 at 6 44 44 PM" src="https://user-images.githubusercontent.com/22893767/142477504-d11c68de-3f6b-40f0-b92b-2f4cdce5f351.png">
