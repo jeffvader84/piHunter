@@ -159,7 +159,8 @@ echo ""
 # update pi / install required packages
 logStart "Begin updates and package dependencies installation"
 apt update -y
-apt install htop gdisk whois dnsutils tmux vim git prads tcpdump net-tools scapy nmap tshark foremost yara '^libssl1.0.[0-9]$' libunwind8 network-manager -y && sudo apt upgrade -y
+apt install htop gdisk whois dnsutils tmux vim git tcpdump net-tools scapy nmap tshark foremost yara libunwind8 network-manager -y && sudo apt upgrade -y
+# add prads ^^ ?
 logEnd "Updates and package dependencies installation"
 
 echo "##########################################################################"
@@ -188,8 +189,8 @@ echo "####                       configure System                           ####
 echo "##########################################################################"
 
 # Disable auto-run daemons from recent installs
-systemctl stop prads
-systemctl disable prads
+#systemctl stop prads
+#systemctl disable prads
 
 # Optimize RaspberryPiOS
 logStart "Begin system optimization"
@@ -576,9 +577,7 @@ mkdir -p /var/lib/rita/logs && chmod -R 755 /var/lib/rita
 # copy RITA config file into /etc/rita
 cp /home/pi/piHunter/rita.yaml /etc/rita/config.yaml && chmod 666 /etc/rita/config.yaml
 cd /home/hunter
-rm -rf /home/hunter/rita/*
-rm -rf /home/hunter/rita/.* 2>/dev/null
-rmdir /home/hunter/rita
+rm -rf /home/hunter/rita
 # python -m SimpleHTTPServer 8080 > /dev/null 2>&1 &
 logEnd "RITA install"
 logStart "Run-RITA-Run install"
@@ -588,9 +587,7 @@ cd run-rita-run
 chmod +x run-rita-run.sh
 cp run-rita-run.sh /usr/local/bin/run-rita-run
 cd ..
-rm -rf run-rita-run/*
-rm -rf run-rita-run/.* 2>/dev/null
-rmdir run-rita-run
+rm -rf run-rita-run
 logEnd "Run-RITA-Run"
 
 echo "##########################################################################"
