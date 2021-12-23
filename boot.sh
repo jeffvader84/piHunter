@@ -364,9 +364,7 @@ echo ""
 echo ""
 
 cd ..
-rm -rf zeek/*
-rm -rf zeek/.*
-rmdir zeek
+rm -rf zeek
 
 # create cronjob
 #echo "@reboot sleep 15 && /hunt-xs/zeek/bin/zeekctl start" >> /var/spool/cron/crontabs/root
@@ -376,7 +374,7 @@ echo "##########################################################################
 echo "####                        install Suricata                          ####"
 echo "##########################################################################"
 logStart "Suricata"
-apt install -y python-pip python3-pip libnss3-dev liblz4-dev libnspr4-dev libcap-ng-dev git libpcre3 libpcre3-dbg libpcre3-dev build-essential libpcap-dev libyaml-0-2 libyaml-dev pkg-config zlib1g zlib1g-dev make libmagic-dev libjansson-dev rustc cargo python-yaml python3-yaml liblua5.1-dev
+apt install -y python3-pip libnss3-dev liblz4-dev libnspr4-dev libcap-ng-dev git libpcre3 libpcre3-dbg libpcre3-dev build-essential libpcap-dev libyaml-0-2 libyaml-dev pkg-config zlib1g zlib1g-dev make libmagic-dev libjansson-dev rustc cargo python3-yaml liblua5.1-dev
 
 mkdir /hunt-xs/suricata
 
