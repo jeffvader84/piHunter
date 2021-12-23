@@ -448,13 +448,13 @@ echo "##########################################################################
 echo "####                      install Elastic Stack                       ####"
 echo "##########################################################################"
 logStart "Elastic Stack"
-sysctl -w vm.max_map_count=600000
-if [[ `cat /proc/sys/vm/max_map_count` = 600000 ]]
-then
-	echo "Successfully changed vm.max_map_count"
-else
-	echo "Failed to change vm.max_map_count"
-fi
+#sysctl -w vm.max_map_count=600000
+#if [[ `cat /proc/sys/vm/max_map_count` = 600000 ]]
+#then
+#	echo "Successfully changed vm.max_map_count"
+#else
+#	echo "Failed to change vm.max_map_count"
+#fi
 
 # get elastic stack docker images
 docker pull docker.elastic.co/elasticsearch/elasticsearch:7.13.1-arm64
