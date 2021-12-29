@@ -472,7 +472,7 @@ mkdir -p /hunt-xs/elastic/kb-data
 chown hunter:hunter -R /hunt-xs/elastic
 chmod 777 -R /hunt-xs/elastic
 
-docker run -d --name elasticsearch --net huntnet -p 9200:9200 -p 9300:9300 -v /hunt-xs/elastic/es-data:/usr/share/elasticsearch/data -v /hunt-xs/elastic/es-logs:/usr/share/elasticsearch/logs -e "discovery.type=single-node" -e "xpack.security.enabled=true" -e "ES_JAVA_OPTS=-Xms768m -Xmx768m" -e ELASTIC_PASSWORD=$EPASSWD -e "cluster.name=piHunter" -e "node.name=piHunter.es" docker.elastic.co/elasticsearch/elasticsearch:7.13.1-arm64
+docker run -d --name elasticsearch --net huntnet -p 9200:9200 -p 9300:9300 -v /hunt-xs/elastic/es-data:/usr/share/elasticsearch/data -v /hunt-xs/elastic/es-logs:/usr/share/elasticsearch/logs -e "discovery.type=single-node" -e "xpack.security.enabled=true" -e "ES_JAVA_OPTS=-Xms2g -Xmx2g" -e ELASTIC_PASSWORD=$EPASSWD -e "cluster.name=piHunter" -e "node.name=piHunter.es" docker.elastic.co/elasticsearch/elasticsearch:7.13.1-arm64
 # docker run -d --name elasticsearch --net huntnet -p 9200:9200 -p 9300:9300 -v /hunt-xs/elastic/es-data:/usr/share/elasticsearch/data -v /hunt-xs/elastic/es-logs:/usr/share/elasticsearch/logs -e "discovery.type=single-node" -e "xpack.security.enabled=true" -e ELASTIC_PASSWORD=$EPASSWD -e "cluster.name=piHunter" -e "node.name=piHunter.es" docker.elastic.co/elasticsearch/elasticsearch:7.13.1-arm64
 # sleep to allow elasticsearch container to spin up
 sleep 120
