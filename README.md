@@ -21,7 +21,7 @@ piHunter will optimize the RaspberryPi to run all of the following tools:
 1. Raspberry Pi 4B 8GB
 2. Micro SD Card 64 GB (128 GB Recommended)
 3. [BalenaEtcher](https://www.balena.io/etcher/)
-4. [RaspberryPi OS Lite 64-Bit](https://downloads.raspberrypi.org/raspios_lite_arm64/images/)
+4. [RaspberryPi OS Lite 64-Bit](https://downloads.raspberrypi.org/raspios_lite_arm64/images/) (Buster version DOES NOT support bullseye)
 5. Ethernet Cable (2x)
 6. USB 3.0 Ethernet Adaptor
 7. Switch with Port Mirroring capabilities
