@@ -298,7 +298,7 @@ echo "hunter - nofile 65536" >> /etc/security/limits.conf
 # external storage setup
 logStart "Mount point directory and External Storage setup"
 # delete any existing partition, then format the disk
-echo -e "d\nd\nd\nn\n\r\n\r\n\r\n8300\nw\nY" | sudo gdisk /dev/$XS
+echo -e "d\n1\d\nd\nn\n\r\n\r\n\r\n8300\nw\nY" | sudo gdisk /dev/$XS
 # create label for partition
 echo -e "y" | sudo mkfs.ext4 -L piHunter-xs /dev/${XS}1
 # grab UUID
@@ -351,7 +351,7 @@ echo "alias zeekctl='/hunt-xs/zeek/bin/zeekctl'" >> /root/.bashrc
 source /home/hunter/.profile
 source /root/.profile
 
-echo "172.16.30.0/24    Home Network" > /hunt-xs/zeek/etc/networks.cfg
+echo "$ROUTERIP/24    Home Network" > /hunt-xs/zeek/etc/networks.cfg
 
 chown hunter:hunter -R /hunt-xs/zeek
 
@@ -394,8 +394,7 @@ cd ..
 make install-full
 logEnd "Suricata setup"
 cd ..
-rm -rf suricata-6.0.2/
-rmdir suricata-6.0.2
+rm -rf suricata-6.0.2
 
 # set HOME_NET var
 cp /home/pi/piHunter/suricata.yml.original /etc/suricata/suricata.yml
@@ -481,7 +480,8 @@ docker run -d --name kibana --net huntnet -p 5601:5601 -v /hunt-xs/elastic/kb-da
 # sleep to allow kibana container to spin up
 sleep 90
 
-#docker stop kibana
+docker stop kibana
+docker stop elasticsearch
 logEnd "Elastic Stack"
 echo "##########################################################################"
 echo "####                          install Arkime                          ####"
@@ -504,6 +504,8 @@ chmod 777 -R /hunt-xs/arkime
 # copy custom config file
 cp /home/pi/piHunter/config.ini.original /opt/arkime/etc/config.ini
 # initiate Arkime
+docker start elasticsearch
+sleep 120
 cd db
 ./db.pl http://elastic:pihunter@localhost:9200 init
 # create default admin user
@@ -518,9 +520,7 @@ geoipupdate
 
 # remove Git repo for Arkime
 cd /home/hunter
-rm -rf arkime/*
-rm -rf arkime/.* 2>/dev/null
-rmdir arkime
+rm -rf arkime
 
 logEnd "Arkime"
 echo "##########################################################################"
