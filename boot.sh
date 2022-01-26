@@ -304,7 +304,7 @@ echo -e "y" | sudo mkfs.ext4 -L piHunter-xs /dev/${XS}1
 # grab UUID
 XSUUID=$(blkid | grep ${XS}1 | awk '{print $3}')
 # add to fstab for persistence on reboot
-echo "$XSUUID /hunt-xs ext4 defaults  0 0" >> /etc/fstab
+echo "$XSUUID /hunt-xs ext4 defaults,nofail  0 0" >> /etc/fstab
 # make dir for mount point
 mkdir /hunt-xs
 # mount external storage
